@@ -4,19 +4,19 @@ package puzzle;
 import java.util.*;
 
 public class Puzzle {
-   int F_mat[][]={{1,2,3},{8,0,4},{7,6,5}};
-   static int I_mat[][]={{2,8,3},{1,6,4},{7,0,5}};
+   int F_mat[][]={{1,2,3},{8,0,4},{7,6,5}};  //Final matrix or goal matrix
+   static int  I_mat[][]={{2,8,3},{1,6,4},{7,0,5}}; //Initial Matrix
    
-   static int[][] swap(int arr[][],int i,int j,int p, int q){
+   
+   // swap function for generating the new transition matrix
+    int[][] swap(int arr[][],int i,int j,int p, int q){
      arr[i][j]=arr[p][q];
      arr[p][q]=0;
-   
-   
-   return arr;
+     return arr;
    }
    
    
-   
+    // compare fuction to compare the two input matrixes
     boolean compare(int a[][],int b[][]){
         boolean flag=true;
         for(int i=0;i<a.length;i++){
@@ -31,6 +31,7 @@ public class Puzzle {
         return flag;
     }
     
+    //Finding the blank
     int[] find_blank(int a[][]){
     int array[]=new int[2];
      for(int i=0;i<a.length;i++){
@@ -42,34 +43,26 @@ public class Puzzle {
          }
         } 
        }
-    
-    
-    
-    
     return array ;
     }
     
     
-   int count=0; 
+    int count=0; 
+   
+   // running the 8 puzzle
    void run_puzzle(int a[][]){
        int ar[]=find_blank(a);
        int x=ar[0];
        int y=ar[1];
+       Print_Trans_matrix(a);
        if(compare(a, I_mat)==true){}else{
        if(compare(a, F_mat)==true){count++;}
        else{
-           
-           if(x-1>=0&&y<a.length||x-1<a.length&&y>=0){
-              
-            run_puzzle(swap(a[][],x,y,x-1,y));}
-           if(x>=0&&y-1<a.length||x<a.length&&y-1>=0){
-            run_puzzle(swap(a[][],x,y,x,y-1)); }
-           
-           if(x+1>=0&&y<a.length||x+1<a.length&&y>=0){
-            run_puzzle(swap(a[][],x,y,x+1,y)); }
-           
-           if(x>=0&&y+1<a.length||x<a.length&&y+1>=0){
-            run_puzzle(swap(a[][],x,y,x,y+1)); }                                                                                                                                   
+           if(x-1>=0&&y<a.length||x-1<a.length&&y>=0){run_puzzle(swap(a,x,y,x-1,y));}
+           if(x>=0&&y-1<a.length||x<a.length&&y-1>=0){run_puzzle(swap(a,x,y,x,y-1));}
+           if(x+1>=0&&y<a.length||x+1<a.length&&y>=0){run_puzzle(swap(a,x,y,x+1,y));}
+           if(x>=0&&y+1<a.length||x<a.length&&y+1>=0){run_puzzle(swap(a,x,y,x,y+1));}
+                                                                                                                                         
        }
        
        
@@ -77,10 +70,28 @@ public class Puzzle {
    
    
    }
+   void Print(){
+   System.out.println(count);
+   }
+   
+   void Print_Trans_matrix(int a[][]){
+   
+        for(int i=0;i<a.length;i++){
+        for(int j=0;j<a.length;j++){
+            System.out.print(a[i][j]);
+        } 
+        System.out.println();
+       }
+   
+   
+   
+   }
     
     public static void main(String[] args) {
         Puzzle puzzle=new Puzzle();
         puzzle.run_puzzle(I_mat);
+        puzzle.Print();
+        
         
         
     }
@@ -88,4 +99,3 @@ public class Puzzle {
 
     
 }
-s
