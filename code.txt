@@ -7,7 +7,7 @@ public class Puzzle {
    int F_mat[][]={{1,2,3},{8,0,4},{7,6,5}};
    static int I_mat[][]={{2,8,3},{1,6,4},{7,0,5}};
    
-   int[][] swap(int arr[][],int i,int j,int p, int q){
+   static int[][] swap(int arr[][],int i,int j,int p, int q){
      arr[i][j]=arr[p][q];
      arr[p][q]=0;
    
@@ -59,32 +59,21 @@ public class Puzzle {
        if(compare(a, F_mat)==true){count++;}
        else{
            
-           if(x-1>=0&&y<a.length||x-1<a.length&&y>=0)
-            run_puzzle(swap(a[][],x,y,x-1,y));
-           if(x>=0&&y-1<a.length||x<a.length&&y-1>=0)
-            run_puzzle(swap(a[][],x,y,x,y-1)); 
+           if(x-1>=0&&y<a.length||x-1<a.length&&y>=0){
+              
+            run_puzzle(swap(a[][],x,y,x-1,y));}
+           if(x>=0&&y-1<a.length||x<a.length&&y-1>=0){
+            run_puzzle(swap(a[][],x,y,x,y-1)); }
            
-           if(x+1>=0&&y<a.length||x+1<a.length&&y>=0)
-            run_puzzle(swap(a[][],x,y,x+1,y)); 
+           if(x+1>=0&&y<a.length||x+1<a.length&&y>=0){
+            run_puzzle(swap(a[][],x,y,x+1,y)); }
            
-           if(x>=0&&y+1<a.length||x<a.length&&y+1>=0)
-            run_puzzle(swap(a[][],x,y,x,y+1)); 
-           
-            
-        
-            
-           
+           if(x>=0&&y+1<a.length||x<a.length&&y+1>=0){
+            run_puzzle(swap(a[][],x,y,x,y+1)); }                                                                                                                                   
        }
        
        
        }
-       
-       
-       
-       
-       
-       
-   
    
    
    }
@@ -99,3 +88,4 @@ public class Puzzle {
 
     
 }
+s
