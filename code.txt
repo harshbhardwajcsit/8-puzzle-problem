@@ -1,23 +1,49 @@
 
 package puzzle;
 
+import java.util.*;
+
 public class Puzzle {
    int F_mat[][]={{1,2,3},{8,0,4},{7,6,5}};
     boolean compare(int a[][],int b[][]){
         boolean flag=true;
         for(int i=0;i<a.length;i++){
-        for(int j=0;j<a.length;j++){
-         if(a[i][j]!=b[i][j]){
-          flag=false;
+          for(int j=0;j<a.length;j++){
+           if(a[i][j]!=b[i][j]){
+           flag=false;
+           break;
          }
         } 
-        }
+       }
         
         return flag;
     }
     
+    int[] find_blank(int a[][]){
+    int array[]=new int[2];
+     for(int i=0;i<a.length;i++){
+        for(int j=0;j<a.length;j++){
+         if(a[i][j]==0){
+          array[0]=i;
+          array[1]=j;
+          break;
+         }
+        } 
+       }
+    
+    
+    
+    
+    return array ;
+    }
+    
+    
+    
    void run_puzzle(int a[][]){
-      
+       int ar[]=find_blank(a);
+       
+       
+       
     
    
    
@@ -33,5 +59,7 @@ public class Puzzle {
         
         
     }
+
+
     
 }
