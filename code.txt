@@ -5,6 +5,7 @@ import java.util.*;
 
 public class Puzzle {
    int F_mat[][]={{1,2,3},{8,0,4},{7,6,5}};
+   static int I_mat[][]={{2,8,3},{1,6,4},{7,0,5}};
     boolean compare(int a[][],int b[][]){
         boolean flag=true;
         for(int i=0;i<a.length;i++){
@@ -38,22 +39,31 @@ public class Puzzle {
     }
     
     
-    
+   int count=0; 
    void run_puzzle(int a[][]){
        int ar[]=find_blank(a);
+       int x=ar[0];
+       int y=ar[1];
+       if(compare(a, I_mat)==true){}else{
+       if(compare(a, F_mat)==true){count++;}
+       else{
+         
+       }
+       
+       
+       }
        
        
        
-    
-   
+       
+       
+       
    
    
    
    }
     
     public static void main(String[] args) {
-        int I_mat[][]={{2,8,3},{1,6,4},{7,0,5}};
-	
         Puzzle puzzle=new Puzzle();
         puzzle.run_puzzle(I_mat);
         
